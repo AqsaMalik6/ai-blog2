@@ -207,7 +207,7 @@ Edit `frontend/static/css/style.css`
 ### Blogs
 - id, user_id, chat_id, topic, content, timestamp
 
-## 🤝 Support
+## Support
 
 If you encounter any issues:
 1. Check the console for error messages
@@ -221,4 +221,4 @@ MIT License - Free to use and modify!
 
 ---
 
-**Made with ❤️ using FastAPI, Gemini AI, and PostgreSQL**
+**Made with using FastAPI, Gemini AI, and PostgreSQL**
