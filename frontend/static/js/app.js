@@ -111,17 +111,27 @@ async function generateBlog() {
         const res = await fetch('/api/generate-blog', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ topic, user_id: 1 })
+            body: JSON.stringify({
+                topic,
+                user_id: 1,
+                chat_id: currentChatId // REUSE current chat if it exists
+            })
         });
         const data = await res.json();
         removeLoading();
 
         if (data.success) {
             addMessageToUI('assistant', data.content);
-            currentChatId = data.chat_id;
+            if (!currentChatId) {
+                currentChatId = data.chat_id;
+            }
             loadChats();
         } else {
-            addMessageToUI('assistant', "**System Error**: " + (data.detail || "Unable to process request."));
+            let errorMsg = "Unable to process request.";
+            if (data.detail) {
+                errorMsg = typeof data.detail === 'string' ? data.detail : JSON.stringify(data.detail);
+            }
+            addMessageToUI('assistant', "**System Error**: " + errorMsg);
         }
     } catch (err) {
         removeLoading();

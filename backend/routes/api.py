@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from typing import List
+from typing import List, Optional
 from pydantic import BaseModel
 from backend.database.database import get_db
 from backend.models.models import User, Chat, Message, Blog
@@ -21,7 +21,8 @@ ai_agent = GeminiAgent()
 # Pydantic models for request/response
 class TopicRequest(BaseModel):
     topic: str
-    user_id: int = 1  # Default user for simplicity
+    user_id: int = 1
+    chat_id: Optional[int] = None
 
 
 class ChatResponse(BaseModel):
@@ -75,13 +76,19 @@ async def generate_blog(request: TopicRequest, db: Session = Depends(get_db)):
             db.commit()
             db.refresh(user)
 
-        # Step 2: Create new chat
-        chat = Chat(
-            user_id=user.id, title=request.topic[:100]  # Truncate title if too long
-        )
-        db.add(chat)
-        db.commit()
-        db.refresh(chat)
+        # Step 2: Get or Create chat
+        if request.chat_id:
+            chat = db.query(Chat).filter(Chat.id == request.chat_id).first()
+            if not chat:
+                chat = Chat(user_id=user.id, title=request.topic[:100])
+                db.add(chat)
+                db.commit()
+                db.refresh(chat)
+        else:
+            chat = Chat(user_id=user.id, title=request.topic[:100])
+            db.add(chat)
+            db.commit()
+            db.refresh(chat)
 
         # Step 3: Save user message
         user_message = Message(

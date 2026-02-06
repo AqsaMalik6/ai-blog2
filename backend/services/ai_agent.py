@@ -103,36 +103,31 @@ Write the complete blog article now:"""
         self, topic: str, search_results: List[Dict]
     ) -> Dict[str, str]:
         """
-        Complete AI agent workflow with intent detection:
-        1. Check if the topic is a general greeting or off-topic
-        2. Summarize search results
-        3. Generate blog article
+        Complete AI agent workflow with smart intent detection:
+        1. Ask Gemini if this is a valid/professional blog topic.
+        2. If not, get a polite response from Gemini.
+        3. If yes, generate the blog.
         """
-        # Step 0: Intent Detection / Guardrails
-        lower_topic = topic.lower().strip()
+        # Step 0: Smart Intent Detection using Gemini
+        from datetime import datetime
+        current_time = datetime.now().strftime("%A, %B %d, %Y")
         
-        # Identity Check
-        if any(x in lower_topic for x in ["who are you", "aap kon hain", "tum kon ho"]):
-            return {"blog_content": "I am your AI Blog Agent. My purpose is to research and write professional blog articles for you. Please provide a topic to get started!"}
+        intent_prompt = f"""You are an AI Blog Agent. Your task is to determine if the following user query is a valid topic for a professional, long-form blog article.
         
-        # Greeting Check
-        if any(x in lower_topic for x in ["aoa", "hello", "hi", "how are you", "kaisy ho", "kaise ho"]):
-            # Ask the AI to provide a friendly greeting response
-            prompt = f"The user said: '{topic}'. Act as a friendly AI Blog Agent. Respond briefly and politely. If they ask how you are, say you are fine and ready to help with a blog topic."
-            greeting = await self._generate_with_fallback(prompt)
-            return {"blog_content": greeting}
-
-        # Math, Coding or Off-topic Check
-        is_math = any(char in lower_topic for char in "+-*/=") and any(char.isdigit() for char in lower_topic)
-        is_coding = any(x in lower_topic for x in ["code", "programming", "python code", "script", "html", "write a function"])
+        User Query: "{topic}"
+        Current Context: Today is {current_time}.
         
-        if is_math or is_coding or len(lower_topic.split()) < 2:
-            if not is_math and not is_coding and len(lower_topic) > 3: # Allow short topics if they aren't math or code
-                pass
-            else:
-                if is_coding:
-                    return {"blog_content": "I am a **Blog Agent**, and I cannot provide or write programming code. I specialize in research and writing professional blog articles. If you would like me to write a blog post about a technical topic, I'd be happy to help!"}
-                return {"blog_content": "I'm sorry, that is not a blog topic. I specialize in writing research-backed blog articles. Please provide a relevant topic, like 'Benefits of AI' or 'Travel guide to Paris', so I can help you!"}
+        Instructions:
+        - If the query is a greeting (hi, hello, aoa), an identity question (who are you), a casual question (how are you, what time is it, what day is today), or a math/code request, it is NOT a blog topic.
+        - If it is NOT a blog topic: Respond politely as a "Blog Agent". Mention that while you can't write a blog on this, you're fine/ready. If they asked for date/time/day, provide it. Then ask them to provide a professional blog topic.
+        - If it IS a blog topic: Respond with exactly the word "VALID_TOPIC".
+        
+        Response:"""
+        
+        intent_response = await self._generate_with_fallback(intent_prompt)
+        
+        if "VALID_TOPIC" not in intent_response.upper():
+            return {"blog_content": intent_response.strip()}
 
         # Step 1: Summarize research
         research_summary = await self.summarize_search_results(search_results)
