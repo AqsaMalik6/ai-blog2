@@ -1,23 +1,25 @@
-from duckduckgo_search import DDGS
+from duckduckgo_search import AsyncDDGS
 from typing import List, Dict
 import asyncio
 
 
 class WebSearchService:
     def __init__(self):
-        self.ddgs = DDGS()
+        # We'll create the instance inside the async method to ensure it's in the correct loop
+        pass
 
     async def search_topic(self, query: str, max_results: int = 5) -> List[Dict]:
         """
-        Perform web search on a given topic
-        Returns list of search results with title, snippet, and link
+        Perform web search on a given topic using AsyncDDGS
         """
         try:
-            # Run search in thread pool to avoid blocking
-            loop = asyncio.get_event_loop()
-            results = await loop.run_in_executor(
-                None, lambda: list(self.ddgs.text(query, max_results=max_results))
-            )
+            results = []
+            async with AsyncDDGS() as ddgs:
+                async for result in ddgs.atext(query, max_results=max_results):
+                    results.append(result)
+            
+            # Simple list to hold results after the context manager closes
+            search_data = results
 
             formatted_results = []
             for result in results:
@@ -31,7 +33,7 @@ class WebSearchService:
 
             return formatted_results
         except Exception as e:
-            print(f"❌ Search error: {str(e)}")
+            print(f"Search error: {str(e)}")
             return []
 
     async def multi_search(self, topic: str, num_searches: int = 3) -> List[Dict]:
@@ -57,4 +59,4 @@ class WebSearchService:
                 unique_results.append(result)
                 seen_titles.add(result["title"])
 
-        return unique_results[:10]  # Limit to top 10 unique results
+        return unique_results[:10]

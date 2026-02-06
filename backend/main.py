@@ -1,11 +1,17 @@
+import os
+import sys
+
+# Add root directory to sys.path to support 'backend.' imports
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if BASE_DIR not in sys.path:
+    sys.path.append(BASE_DIR)
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-from routes.api import router as api_router
-
+from backend.routes.api import router as api_router
 from backend.database.database import init_db
-import os
 
 app = FastAPI(title="AI Blog Generation Agent", version="1.0.0")
 
@@ -22,22 +28,26 @@ app.add_middleware(
 # Initialize database on startup
 @app.on_event("startup")
 async def startup_event():
-    print("🚀 Starting AI Blog Generation Agent...")
+    print("Starting AI Blog Generation Agent...")
     init_db()
-    print("✅ Database initialized!")
+    print("Database initialized!")
 
 
 # Include API routes
 app.include_router(api_router, prefix="/api", tags=["API"])
 
 # Serve static files
-app.mount("/static", StaticFiles(directory="frontend/static"), name="static")
+app.mount(
+    "/static",
+    StaticFiles(directory=os.path.join(BASE_DIR, "frontend", "static")),
+    name="static",
+)
 
 
 # Serve frontend
 @app.get("/")
 async def read_root():
-    return FileResponse("frontend/index.html")
+    return FileResponse(os.path.join(BASE_DIR, "frontend", "index.html"))
 
 
 if __name__ == "__main__":

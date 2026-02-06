@@ -93,13 +93,13 @@ async def generate_blog(request: TopicRequest, db: Session = Depends(get_db)):
         db.commit()
 
         # Step 4: Perform web searches
-        print(f"🔍 Searching for: {request.topic}")
+        print(f"Searching for: {request.topic}")
         search_results = await search_service.multi_search(
             request.topic, num_searches=3
         )
 
         # Step 5: Process with AI agent
-        print(f"🤖 Generating blog with AI...")
+        print(f"Generating blog with AI...")
         ai_result = await ai_agent.process_topic(request.topic, search_results)
 
         blog_content = ai_result["blog_content"]
@@ -119,7 +119,7 @@ async def generate_blog(request: TopicRequest, db: Session = Depends(get_db)):
         db.commit()
         db.refresh(blog)
 
-        print(f"✅ Blog generated successfully!")
+        print(f"Blog generated successfully!")
 
         return {
             "success": True,
@@ -131,7 +131,7 @@ async def generate_blog(request: TopicRequest, db: Session = Depends(get_db)):
         }
 
     except Exception as e:
-        print(f"❌ Error: {str(e)}")
+        print(f"Error: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -166,6 +166,13 @@ async def delete_chat(chat_id: int, db: Session = Depends(get_db)):
     if not chat:
         raise HTTPException(status_code=404, detail="Chat not found")
 
+    # Step 1: Delete associated blogs manually to ensure no FK violations
+    db.query(Blog).filter(Blog.chat_id == chat_id).delete()
+    
+    # Step 2: Delete associated messages (cascade might fail if DB state is weird)
+    db.query(Message).filter(Message.chat_id == chat_id).delete()
+
+    # Step 3: Delete the chat
     db.delete(chat)
     db.commit()
     return {"success": True, "message": "Chat deleted successfully"}

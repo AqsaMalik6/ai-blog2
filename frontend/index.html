@@ -4,94 +4,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Blog Generator - OpenAI Agents SDK</title>
+    <title>AI Blog Agent - Gemini Premier</title>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 
 <body>
     <div class="container">
         <!-- Sidebar -->
-        <div class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <h2>💬 Chat History</h2>
-                <button class="new-chat-btn" onclick="createNewChat()">+ New Chat</button>
-            </div>
-            <div class="chat-list" id="chatList">
-                <!-- Chats will be loaded here -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-top">
+                <button class="new-project-btn" onclick="createNewChat()">
+                    <span>+ New Project</span>
+                </button>
             </div>
 
-            <!-- Agent System Info -->
-            <div class="agent-info-box">
-                <h3>🤖 Agent System</h3>
-                <div class="agent-badge">OpenAI Agents SDK</div>
-                <div class="agent-badge">Gemini Backend</div>
-                <div class="agent-list">
-                    <div class="agent-item">🔍 Research Agent</div>
-                    <div class="agent-item">✍️ Writer Agent</div>
-                    <div class="agent-item">📝 Editor Agent</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Main Chat Area -->
-        <div class="main-area">
-            <div class="chat-header">
-                <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
-                <h1>🤖 AI Blog Generation Agent</h1>
-                <span class="badge">OpenAI SDK + Gemini</span>
-            </div>
-
-            <div class="chat-messages" id="chatMessages">
-                <div class="welcome-message">
-                    <h2>Welcome to AI Blog Generator! 🎯</h2>
-                    <p><strong>Powered by OpenAI Agents SDK Architecture</strong></p>
-
-                    <div class="features-grid">
-                        <div class="feature">
-                            <div class="feature-icon">🔍</div>
-                            <h3>Research Agent</h3>
-                            <p>Analyzes web search results</p>
-                        </div>
-                        <div class="feature">
-                            <div class="feature-icon">✍️</div>
-                            <h3>Writer Agent</h3>
-                            <p>Generates professional blogs</p>
-                        </div>
-                        <div class="feature">
-                            <div class="feature-icon">📝</div>
-                            <h3>Editor Agent</h3>
-                            <p>Polishes content to perfection</p>
-                        </div>
-                    </div>
-
-                    <p class="small-text">Multi-agent collaboration powered by Gemini API</p>
-
-                    <div class="pipeline-toggle">
-                        <label>
-                            <input type="checkbox" id="pipelineMode">
-                            Enable Pipeline Mode (slower but higher quality)
-                        </label>
-                    </div>
+            <div class="sidebar-content">
+                <div class="chat-list" id="chatList">
+                    <!-- Loaded via JS -->
                 </div>
             </div>
 
-            <div class="input-area">
-                <div class="input-container">
-                    <textarea id="topicInput"
-                        placeholder="Enter a topic for blog generation... (e.g., 'The Future of AI')"
-                        rows="1"></textarea>
-                    <button class="send-btn" onclick="generateBlog()" id="sendBtn">
-                        <span>Send</span>
+            <div class="sidebar-footer">
+                <div class="system-tag">
+                    <span class="pulse-dot"></span>
+                    <div class="tag-info">
+                        <h3>System Intelligence</h3>
+                        <p>Agent Core v2.5 Online</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-area">
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <button class="menu-btn" onclick="toggleSidebar()">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+                        </svg>
                     </button>
+                    <div class="title-group">
+                        <span class="app-title">AI Blog Generation Agent</span>
+                        <span class="premier-badge">GEMINI PREMIER</span>
+                    </div>
                 </div>
-                <p class="disclaimer">
-                    <span class="agent-badge-small">3-Agent System</span>
-                    Research → Write → Edit | AI can make mistakes. Verify important info.
-                </p>
-            </div>
-        </div>
-    </div>
+                <div class="top-bar-right">
+                    <div class="profile-circle">A</div>
+                </div>
+            </header>
 
+            <div class="chat-viewport" id="chatContainer">
+                <!-- Welcome/Home State -->
+                <div class="welcome-screen" id="welcomeScreen">
+                    <div class="greeting">
+                        <span class="sparkle-grad">✨</span> Hi Aqsa
+                    </div>
+                    <h1>Where should we start?</h1>
+
+                    <div class="suggest-row">
+                        <div class="suggest-card" onclick="setTopic('Write a deep-dive blog about AI Ethics')">
+                            <span class="card-icon">✍️</span>
+                            <p>Write anything</p>
+                        </div>
+                        <div class="suggest-card" onclick="setTopic('Research the latest trends in renewable energy')">
+                            <span class="card-icon">🚀</span>
+                            <p>Boost my day</p>
+                        </div>
+                        <div class="suggest-card" onclick="setTopic('Explain quantum computing for beginners')">
+                            <span class="card-icon">🎓</span>
+                            <p>Help me learn</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Messages State -->
+                <div class="chat-messages" id="chatMessages"></div>
+            </div>
+
+            <!-- Global Input -->
+            <div class="input-hub">
+                <div class="input-pill">
+                    <textarea id="topicInput" placeholder="Message AI Blog Agent..." rows="1"></textarea>
+                    <div class="input-actions">
+                        <div class="brand-icons">
+                            <svg class="bulb-icon" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path
+                                    d="M9 21h6m-3-3v3m-4.5-9a4.5 4.5 0 119 0c0 1.5-.7 2.8-1.8 3.5-1.1.7-1.7 1.9-1.7 3.2v.3H9v-.3c0-1.3-.6-2.5-1.7-3.2-1.1-.7-1.8-2-1.8-3.5z" />
+                            </svg>
+                            <span class="g-logo">G</span>
+                        </div>
+                        <button class="send-btn" id="sendBtn" onclick="generateBlog()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="19" x2="12" y2="5"></line>
+                                <polyline points="5 12 12 5 19 12"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <p class="disclaimer">AI Agent can make mistakes. Verify important information.</p>
+            </div>
+        </main>
+    </div>
     <script src="/static/js/app.js"></script>
 </body>
 
