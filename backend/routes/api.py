@@ -119,6 +119,7 @@ async def generate_blog(request: TopicRequest, db: Session = Depends(get_db)):
         db.commit()
         db.refresh(blog)
 
+        print(f"Blog saved to DB with ID: {blog.id}")
         print(f"Blog generated successfully!")
 
         return {

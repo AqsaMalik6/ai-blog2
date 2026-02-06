@@ -103,10 +103,37 @@ Write the complete blog article now:"""
         self, topic: str, search_results: List[Dict]
     ) -> Dict[str, str]:
         """
-        Complete AI agent workflow:
-        1. Summarize search results
-        2. Generate blog article
+        Complete AI agent workflow with intent detection:
+        1. Check if the topic is a general greeting or off-topic
+        2. Summarize search results
+        3. Generate blog article
         """
+        # Step 0: Intent Detection / Guardrails
+        lower_topic = topic.lower().strip()
+        
+        # Identity Check
+        if any(x in lower_topic for x in ["who are you", "aap kon hain", "tum kon ho"]):
+            return {"blog_content": "I am your AI Blog Agent. My purpose is to research and write professional blog articles for you. Please provide a topic to get started!"}
+        
+        # Greeting Check
+        if any(x in lower_topic for x in ["aoa", "hello", "hi", "how are you", "kaisy ho", "kaise ho"]):
+            # Ask the AI to provide a friendly greeting response
+            prompt = f"The user said: '{topic}'. Act as a friendly AI Blog Agent. Respond briefly and politely. If they ask how you are, say you are fine and ready to help with a blog topic."
+            greeting = await self._generate_with_fallback(prompt)
+            return {"blog_content": greeting}
+
+        # Math, Coding or Off-topic Check
+        is_math = any(char in lower_topic for char in "+-*/=") and any(char.isdigit() for char in lower_topic)
+        is_coding = any(x in lower_topic for x in ["code", "programming", "python code", "script", "html", "write a function"])
+        
+        if is_math or is_coding or len(lower_topic.split()) < 2:
+            if not is_math and not is_coding and len(lower_topic) > 3: # Allow short topics if they aren't math or code
+                pass
+            else:
+                if is_coding:
+                    return {"blog_content": "I am a **Blog Agent**, and I cannot provide or write programming code. I specialize in research and writing professional blog articles. If you would like me to write a blog post about a technical topic, I'd be happy to help!"}
+                return {"blog_content": "I'm sorry, that is not a blog topic. I specialize in writing research-backed blog articles. Please provide a relevant topic, like 'Benefits of AI' or 'Travel guide to Paris', so I can help you!"}
+
         # Step 1: Summarize research
         research_summary = await self.summarize_search_results(search_results)
 
