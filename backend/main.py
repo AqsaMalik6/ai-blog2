@@ -29,8 +29,14 @@ app.add_middleware(
 @app.on_event("startup")
 async def startup_event():
     print("Starting AI Blog Generation Agent...")
-    init_db()
-    print("Database initialized!")
+    try:
+        print("Checking database connection...")
+        init_db()
+        print("Database initialized successfully!")
+    except Exception as e:
+        print(f"DATABASE ERROR ON STARTUP: {str(e)}")
+        print("Continuing without DB for now (Frontend should still load)...")
+    print("Backend is ready and listening on port 8000")
 
 
 # Include API routes
