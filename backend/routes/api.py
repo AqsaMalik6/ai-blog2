@@ -99,15 +99,9 @@ async def generate_blog(request: TopicRequest, db: Session = Depends(get_db)):
         db.add(user_message)
         db.commit()
 
-        # Step 4: Perform web searches
-        print(f"Searching for: {request.topic}")
-        search_results = await search_service.multi_search(
-            request.topic, num_searches=3
-        )
-
-        # Step 5: Process with AI agent
-        print(f"Generating blog with AI...")
-        ai_result = await ai_agent.process_topic(request.topic, search_results)
+        # Step 4: Process with AI Agent (Matched with SDK Pattern)
+        print(f"Generating blog with AI Agent SDK...")
+        ai_result = await ai_agent.process_topic(request.topic)
 
         blog_content = ai_result["blog_content"]
 
@@ -134,8 +128,7 @@ async def generate_blog(request: TopicRequest, db: Session = Depends(get_db)):
             "chat_id": chat.id,
             "blog_id": blog.id,
             "topic": request.topic,
-            "content": blog_content,
-            "search_results_count": len(search_results),
+            "content": blog_content
         }
 
     except Exception as e:

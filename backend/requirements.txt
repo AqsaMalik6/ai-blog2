@@ -9,3 +9,4 @@ duckduckgo-search==4.4.0
 aiofiles==23.2.1
 python-multipart==0.0.9
 openai==1.12.0
+openai-agents==0.8.0
