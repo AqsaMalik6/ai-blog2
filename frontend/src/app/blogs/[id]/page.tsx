@@ -131,17 +131,17 @@ export default function BlogDetailPage({ params }: { params: Promise<{ id: strin
                             <div className="text-slate-300 leading-[1.8] text-xl md:text-2xl space-y-10 font-medium tracking-tight">
                                 <ReactMarkdown
                                     components={{
-                                        h2: ({ node, ...props }) => <h2 className="text-4xl font-black text-white mt-20 mb-10 tracking-tighter border-l-4 border-emerald-500 pl-8" {...props} />,
-                                        h3: ({ node, ...props }) => <h3 className="text-2xl font-black text-white mt-12 mb-6 tracking-tight" {...props} />,
-                                        p: ({ node, ...props }) => <p className="mb-8" {...props} />,
-                                        ul: ({ node, ...props }) => <ul className="space-y-4 my-10 list-none" {...props} />,
-                                        li: ({ node, ...props }) => (
+                                        h2: ({ ...props }) => <h2 className="text-4xl font-black text-white mt-20 mb-10 tracking-tighter border-l-4 border-emerald-500 pl-8" {...props} />,
+                                        h3: ({ ...props }) => <h3 className="text-2xl font-black text-white mt-12 mb-6 tracking-tight" {...props} />,
+                                        p: ({ ...props }) => <p className="mb-8" {...props} />,
+                                        ul: ({ ...props }) => <ul className="space-y-4 my-10 list-none" {...props} />,
+                                        li: ({ ...props }) => (
                                             <li className="flex gap-4 items-start" {...props}>
                                                 <div className="mt-2.5 w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
                                                 <span>{props.children}</span>
                                             </li>
                                         ),
-                                        blockquote: ({ node, ...props }) => <blockquote className="glass border-l-4 border-emerald-500 p-10 rounded-3xl my-16 text-white italic font-bold" {...props} />
+                                        blockquote: ({ ...props }) => <blockquote className="glass border-l-4 border-emerald-500 p-10 rounded-3xl my-16 text-white italic font-bold" {...props} />
                                     }}
                                 >
                                     {blog.content}

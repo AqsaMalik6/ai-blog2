@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Cpu, Globe, Image as ImageIcon, Layout, Search, Zap, Layers, BarChart3, Fingerprint } from 'lucide-react';
+import { Cpu, Globe, Image as ImageIcon, Search, Zap, Layers, BarChart3, Fingerprint } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const features = [

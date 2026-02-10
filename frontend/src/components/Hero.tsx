@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ChevronRight, Play, Zap, Shield, Cpu, ArrowDownRight } from 'lucide-react';
+import { Play, Zap, Shield, Cpu, ArrowDownRight } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Hero() {

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { chatApi, Chat } from '@/lib/api';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, Plus, Trash2, History, ChevronLeft, ChevronRight, Terminal, Zap, ShieldCheck } from 'lucide-react';
+import { Plus, Trash2, History, ChevronLeft, ChevronRight, ShieldCheck } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import toast from 'react-hot-toast';
 
@@ -22,7 +22,7 @@ export default function WorkspaceSidebar({ onSelectChat, selectedChatId }: Sideb
         try {
             const data = await chatApi.getAll();
             setChats(data);
-        } catch (error) { console.error('Error loading chats:', error); }
+        } catch (_error) { console.error('Error loading chats:', _error); }
     };
 
     const handleDeleteChat = async (e: React.MouseEvent, id: number) => {
@@ -31,7 +31,7 @@ export default function WorkspaceSidebar({ onSelectChat, selectedChatId }: Sideb
             await chatApi.delete(id);
             setChats(chats.filter(c => c.id !== id));
             toast.success('DELETED_LOG_SUCCESS');
-        } catch (error) { toast.error('ACTION_FAILED'); }
+        } catch (_error) { toast.error('ACTION_FAILED'); }
     };
 
     return (

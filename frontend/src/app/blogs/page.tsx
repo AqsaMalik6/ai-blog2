@@ -5,7 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { blogApi, Blog } from '@/lib/api';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Calendar, User, ArrowRight, Filter, LayoutGrid, List as ListIcon, Sparkles } from 'lucide-react';
+import { Search, Calendar, User, ArrowRight, LayoutGrid, List as ListIcon, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { formatDate } from '@/lib/utils';
 import { cn } from '@/lib/utils';

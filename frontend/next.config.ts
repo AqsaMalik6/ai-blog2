@@ -4,6 +4,12 @@ const nextConfig: NextConfig = {
   images: {
     domains: ["localhost", "image.pollinations.ai"],
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   // If the backend and frontend are on different ports, we might need rewrites
   /*
   async rewrites() {

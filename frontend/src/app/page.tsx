@@ -3,7 +3,6 @@ import Hero from '@/components/Hero';
 import Features from '@/components/Features';
 import Footer from '@/components/Footer';
 import { Metadata } from 'next';
-import { motion } from 'framer-motion';
 import { ArrowDownRight, CircuitBoard, Sparkles, Wand2 } from 'lucide-react';
 import Link from 'next/link';
 

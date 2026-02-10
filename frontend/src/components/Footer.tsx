@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Sparkles, Github, Twitter, Linkedin, Mail, MessageCircle, ArrowUpRight } from 'lucide-react';
+import { Sparkles, Github, Twitter, Linkedin, MessageCircle, ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
     return (

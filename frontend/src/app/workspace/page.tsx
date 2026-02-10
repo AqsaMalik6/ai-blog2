@@ -4,7 +4,8 @@ import { useState, useEffect, useRef } from 'react';
 import WorkspaceSidebar from '@/components/workspace/Sidebar';
 import { blogApi, chatApi, Message } from '@/lib/api';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Send, Loader2, Save, Share, Edit3, Image as ImageIcon, Zap, Target, Key, Hash, FileText, ChevronDown, Terminal } from 'lucide-react';
+import { Sparkles, Send, Loader2, Save, Share, Image as ImageIcon, Zap, Target, Key, Hash, FileText, ChevronDown, Terminal } from 'lucide-react';
+import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import toast, { Toaster } from 'react-hot-toast';
 import { cn } from '@/lib/utils';
@@ -39,7 +40,7 @@ export default function WorkspacePage() {
         try {
             const data = await chatApi.getMessages(chatId);
             setMessages(data);
-        } catch (error) { toast.error('Failed to load buffer.'); }
+        } catch (_error) { toast.error('Failed to load buffer.'); }
     };
 
     const handleGenerate = async () => {
@@ -58,7 +59,7 @@ export default function WorkspacePage() {
                 setSelectedChatId(result.chat_id);
                 loadMessages(result.chat_id);
             }
-        } catch (error) {
+        } catch (_error) {
             toast.dismiss(loadingToast);
             toast.error('CONNECTION_INTERRUPTED');
         } finally {
@@ -147,7 +148,7 @@ export default function WorkspacePage() {
                             </motion.div>
                         ) : (
                             <motion.div key="chat" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="max-w-4xl mx-auto space-y-16 pb-48">
-                                {messages.map((msg, idx) => (
+                                {messages.map((msg) => (
                                     <div key={msg.id} className={cn("flex flex-col gap-6", msg.role === 'user' ? "items-end" : "items-start")}>
                                         <div className={cn(
                                             "max-w-[92%] p-10 rounded-[40px] shadow-[0_40px_100px_rgba(0,0,0,0.5)] border transition-all duration-500",
@@ -161,9 +162,9 @@ export default function WorkspacePage() {
                                             )}>
                                                 <ReactMarkdown
                                                     components={{
-                                                        h1: ({ node, ...props }) => <h1 className="text-3xl font-black mb-8 border-l-4 border-emerald-500 pl-4" {...props} />,
-                                                        h2: ({ node, ...props }) => <h2 className="text-2xl font-black mb-6 mt-12" {...props} />,
-                                                        p: ({ node, ...props }) => <p className="mb-6" {...props} />
+                                                        h1: ({ ...props }) => <h1 className="text-3xl font-black mb-8 border-l-4 border-emerald-500 pl-4" {...props} />,
+                                                        h2: ({ ...props }) => <h2 className="text-2xl font-black mb-6 mt-12" {...props} />,
+                                                        p: ({ ...props }) => <p className="mb-6" {...props} />
                                                     }}
                                                 >
                                                     {msg.content}
@@ -172,7 +173,7 @@ export default function WorkspacePage() {
 
                                             {msg.image_url && (
                                                 <div className="mt-12 rounded-[32px] overflow-hidden border border-white/10 group relative ai-scan-line">
-                                                    <img src={msg.image_url} alt="AI Synthesis" className="w-full h-auto object-cover transition-transform duration-[2s] group-hover:scale-110" />
+                                                    <Image src={msg.image_url} alt="AI Synthesis" width={800} height={600} className="w-full h-auto object-cover transition-transform duration-[2s] group-hover:scale-110" />
                                                     <div className="absolute bottom-6 right-6 flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
                                                         <button className="bg-white/10 backdrop-blur-3xl p-4 rounded-2xl text-white hover:bg-emerald-500 transition-colors"><ImageIcon size={20} /></button>
                                                     </div>
@@ -182,7 +183,7 @@ export default function WorkspacePage() {
                                         <div className="flex items-center gap-3 px-6">
                                             <div className={cn("w-1.5 h-1.5 rounded-full", msg.role === 'user' ? "bg-white" : "bg-emerald-500")} />
                                             <span className="text-[10px] text-slate-600 font-bold uppercase tracking-widest leading-none">
-                                                {msg.role} // {new Date(msg.created_at).toLocaleTimeString()}
+                                                {msg.role} {'//'} {new Date(msg.created_at).toLocaleTimeString()}
                                             </span>
                                         </div>
                                     </div>
