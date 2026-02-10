@@ -40,7 +40,7 @@ export default function About() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-2xl md:text-3xl text-white font-medium max-w-3xl mx-auto leading-tight uppercase"
+                        className="text-2xl md:text-3xl text-white font-normal max-w-3xl mx-auto leading-tight uppercase"
                     >
                         Make every visitor feel like your content was written just for them with our advanced neural synthesis.
                     </motion.p>
@@ -89,7 +89,7 @@ export default function About() {
                                     'Generic stock images and dry layouts.',
                                     'Limited understanding of user intent.'
                                 ].map((text, i) => (
-                                    <li key={i} className="flex items-start gap-5 text-white font-medium">
+                                    <li key={i} className="flex items-start gap-5 text-white font-normal">
                                         <XCircle size={24} className="shrink-0 mt-0.5 text-red-500/50" />
                                         <span className="text-xl uppercase tracking-tight">{text}</span>
                                     </li>
@@ -135,7 +135,7 @@ export default function About() {
                                             { text: 'Real-time data integration & SEO monitoring.', color: 'text-white' },
                                             { text: 'Generates branded custom neural visuals.', color: 'text-white' }
                                         ].map((item, i) => (
-                                            <li key={i} className="flex items-start gap-5 font-medium">
+                                            <li key={i} className="flex items-start gap-5 font-normal">
                                                 <CheckCircle2 size={26} className="text-blue-400" />
                                                 <span className="text-white text-xl leading-tight uppercase tracking-tight">{item.text}</span>
                                             </li>

@@ -39,7 +39,7 @@ export default function TechStack() {
                                 </div>
                                 <span className="text-[11px] font-black uppercase tracking-[0.4em] text-white">Active Core Processing</span>
                             </div>
-                            <p className="text-white text-lg font-bold leading-tight uppercase">Every node is verified across 100+ global data points for maximum authority.</p>
+                            <p className="text-white text-lg font-normal leading-tight uppercase">Every node is verified across 100+ global data points for maximum authority.</p>
                         </div>
                     </motion.div>
 
@@ -96,7 +96,7 @@ export default function TechStack() {
                         >
                             <div className="flex items-center gap-5 bg-white/5 border border-white/10 px-10 py-5 rounded-3xl">
                                 <History size={24} className="text-blue-500" />
-                                <span className="text-[12px] font-medium uppercase tracking-[0.3em] text-white">Chat History Persistence Active</span>
+                                <span className="text-[12px] font-normal uppercase tracking-[0.3em] text-white">Chat History Persistence Active</span>
                             </div>
                         </motion.div>
                     </div>

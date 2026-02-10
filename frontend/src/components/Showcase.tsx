@@ -136,7 +136,7 @@ export default function Showcase() {
                                 <div className="p-10 flex-1 flex flex-col">
                                     <div className="mb-6">
                                         <h3 className="text-3xl font-black text-white mb-3 tracking-tight group-hover:text-blue-400 transition-colors uppercase">{item.title}</h3>
-                                        <p className="text-slate-500 text-[10px] font-medium uppercase tracking-[0.4em]">Optimized Neural Node V.4.2</p>
+                                        <p className="text-slate-500 text-[10px] font-normal uppercase tracking-[0.4em]">Optimized Neural Node V.4.2</p>
                                     </div>
 
                                     <div className="mt-auto flex items-center justify-between">

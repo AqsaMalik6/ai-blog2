@@ -83,7 +83,7 @@ export default function BlogsPage() {
                         <motion.span
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="text-blue-500 font-medium uppercase tracking-[0.6em] text-[12px] mb-8 block"
+                            className="text-blue-500 font-normal uppercase tracking-[0.6em] text-[12px] mb-8 block"
                         >
                             The Intelligence Archive
                         </motion.span>
@@ -116,12 +116,12 @@ export default function BlogsPage() {
                                             <div className="absolute top-0 right-0 p-4 opacity-[0.05] group-hover:scale-150 transition-transform">
                                                 <MessageSquare size={80} />
                                             </div>
-                                            <span className="text-[10px] font-medium text-blue-500 uppercase tracking-widest mb-4">Chat ID #{chat.id}</span>
+                                            <span className="text-[10px] font-normal text-blue-500 uppercase tracking-widest mb-4">Chat ID #{chat.id}</span>
                                             <h3 className="text-xl font-black text-white mb-6 uppercase tracking-tight line-clamp-2 leading-tight group-hover:text-blue-400">
                                                 {chat.title}
                                             </h3>
                                             <div className="mt-auto flex items-center justify-between pt-6 border-t border-white/5">
-                                                <span className="text-[10px] font-medium text-slate-500 uppercase tracking-widest">{formatDate(chat.created_at)}</span>
+                                                <span className="text-[10px] font-normal text-slate-500 uppercase tracking-widest">{formatDate(chat.created_at)}</span>
                                                 <ArrowRight size={16} className="text-blue-500 group-hover:translate-x-1 transition-transform" />
                                             </div>
                                         </div>
@@ -143,7 +143,7 @@ export default function BlogsPage() {
                                         key={cat}
                                         onClick={() => setSelectedCategory(cat)}
                                         className={cn(
-                                            "px-6 py-3 rounded-xl font-medium uppercase text-[10px] tracking-widest transition-all",
+                                            "px-6 py-3 rounded-xl font-normal uppercase text-[10px] tracking-widest transition-all",
                                             selectedCategory === cat
                                                 ? "bg-blue-600 text-white shadow-lg shadow-blue-500/20"
                                                 : "bg-white/5 text-slate-500 hover:text-white border border-white/5"
@@ -161,7 +161,7 @@ export default function BlogsPage() {
                                 placeholder="SEARCH ARCHIVE NODES..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="w-full bg-white/5 border border-white/5 rounded-2xl py-5 px-8 text-white placeholder:text-slate-700 font-medium uppercase text-[11px] tracking-widest focus:border-blue-500/50 outline-none transition-all"
+                                className="w-full bg-white/5 border border-white/5 rounded-2xl py-5 px-8 text-white placeholder:text-slate-700 font-normal uppercase text-[11px] tracking-widest focus:border-blue-500/50 outline-none transition-all"
                             />
                         </div>
                     </div>
@@ -170,7 +170,7 @@ export default function BlogsPage() {
                     {isLoading ? (
                         <div className="h-[400px] flex flex-col items-center justify-center gap-8 text-center pt-20">
                             <div className="w-20 h-20 border-t-2 border-blue-500 rounded-full animate-spin" />
-                            <p className="text-blue-500 font-medium uppercase tracking-[0.4em] text-xs">Synchronizing Memory Nodes...</p>
+                            <p className="text-blue-500 font-normal uppercase tracking-[0.4em] text-xs">Synchronizing Memory Nodes...</p>
                         </div>
                     ) : currentBlogs.length > 0 ? (
                         <>
@@ -196,15 +196,15 @@ export default function BlogsPage() {
                                                             className="w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
                                                         />
                                                         <div className="absolute top-6 left-6 px-4 py-2 bg-blue-600 rounded-full">
-                                                            <span className="text-[9px] font-medium uppercase tracking-widest text-white">{category}</span>
+                                                            <span className="text-[9px] font-normal uppercase tracking-widest text-white">{category}</span>
                                                         </div>
                                                     </div>
 
                                                     <div className="flex items-center gap-6 mb-6">
-                                                        <div className="flex items-center gap-2 text-slate-500 text-[10px] font-medium uppercase tracking-widest">
+                                                        <div className="flex items-center gap-2 text-slate-500 text-[10px] font-normal uppercase tracking-widest">
                                                             <Clock size={14} className="text-blue-500" /> {formatDate(blog.timestamp)}
                                                         </div>
-                                                        <div className="flex items-center gap-2 text-slate-500 text-[10px] font-medium uppercase tracking-widest">
+                                                        <div className="flex items-center gap-2 text-slate-500 text-[10px] font-normal uppercase tracking-widest">
                                                             <User size={14} className="text-blue-500" /> Admin
                                                         </div>
                                                     </div>
@@ -213,12 +213,12 @@ export default function BlogsPage() {
                                                         {blog.topic}
                                                     </h3>
 
-                                                    <p className="text-slate-400 font-medium text-sm leading-relaxed line-clamp-3 mb-10 uppercase tracking-tight">
+                                                    <p className="text-slate-400 font-normal text-sm leading-relaxed line-clamp-3 mb-10 uppercase tracking-tight">
                                                         {blog.content.substring(0, 150).replace(/[#*]/g, '')}...
                                                     </p>
 
                                                     <div className="mt-auto pt-8 border-t border-white/5 flex items-center justify-between">
-                                                        <span className="text-[11px] font-medium text-slate-500 group-hover:text-white uppercase tracking-widest transition-colors">Node Insight</span>
+                                                        <span className="text-[11px] font-normal text-slate-500 group-hover:text-white uppercase tracking-widest transition-colors">Node Insight</span>
                                                         <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white group-hover:scale-110 transition-all">
                                                             <ArrowRight size={20} />
                                                         </div>
@@ -246,7 +246,7 @@ export default function BlogsPage() {
                                                 key={i}
                                                 onClick={() => setCurrentPage(i + 1)}
                                                 className={cn(
-                                                    "w-14 h-14 rounded-2xl font-medium transition-all",
+                                                    "w-14 h-14 rounded-2xl font-normal transition-all",
                                                     currentPage === i + 1
                                                         ? "bg-blue-600 text-white"
                                                         : "bg-white/5 text-slate-500 border border-white/5 hover:bg-white/10"
@@ -269,10 +269,10 @@ export default function BlogsPage() {
                     ) : (
                         <div className="text-center py-40 border-2 border-dashed border-white/10 rounded-[64px] bg-white/[0.02]">
                             <h2 className="text-5xl font-black text-white uppercase tracking-tighter mb-4">Zero Nodes Found</h2>
-                            <p className="text-slate-500 text-xl font-medium uppercase">No intelligence matches your search vector.</p>
+                            <p className="text-slate-500 text-xl font-normal uppercase">No intelligence matches your search vector.</p>
                             <button
                                 onClick={() => { setSearchTerm(''); setSelectedCategory('All'); }}
-                                className="mt-12 text-blue-500 font-medium uppercase text-sm tracking-widest hover:underline"
+                                className="mt-12 text-blue-500 font-normal uppercase text-sm tracking-widest hover:underline"
                             >
                                 Clear All Search Vectors
                             </button>
