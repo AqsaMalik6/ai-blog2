@@ -5,7 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { blogApi, Blog } from '@/lib/api';
 import { motion, useScroll, useSpring } from 'framer-motion';
-import { Calendar, User, Clock, Share2, ArrowLeft, Bookmark, Globe, ChevronRight } from 'lucide-react';
+import { Calendar, User, Clock, Share2, ArrowLeft, Bookmark, Globe, ChevronRight, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { formatDate } from '@/lib/utils';
 import ReactMarkdown from 'react-markdown';
