@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import WorkspaceSidebar from '@/components/workspace/Sidebar';
 import { blogApi, chatApi, Message } from '@/lib/api';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Send, Loader2, Save, Share, Edit3, Image as ImageIcon, Zap, Target, Key, Hash, FileText, ChevronDown } from 'lucide-react';
+import { Sparkles, Send, Loader2, Save, Share, Edit3, Image as ImageIcon, Zap, Target, Key, Hash, FileText, ChevronDown, Terminal } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import toast, { Toaster } from 'react-hot-toast';
 import { cn } from '@/lib/utils';
