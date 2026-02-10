@@ -1,104 +1,192 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Play, Zap, Shield, Cpu, ArrowDownRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Bot, Command, Code2, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Hero() {
-    const { scrollY } = useScroll();
-    const y1 = useTransform(scrollY, [0, 400], [0, 100]);
-    const y2 = useTransform(scrollY, [0, 400], [0, -100]);
-
     return (
-        <div className="relative min-h-[100vh] flex items-center justify-center pt-32 pb-20 overflow-hidden bg-[#020617]">
-            {/* Dynamic Grid Background */}
-            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-50"></div>
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+        <section className="relative pt-32 pb-40 overflow-hidden bg-black min-h-[90vh] flex flex-col items-center">
+            {/* Background Atmosphere */}
+            <div className="absolute inset-0 z-0">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[#3b82f6]/10 rounded-full blur-[160px] animate-pulse" />
+                <div className="absolute top-[60%] left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-[#8b5cf6]/5 rounded-full blur-[140px]" />
+                <div className="absolute inset-0 grid-background opacity-20" />
+            </div>
 
-            {/* Pulsing Orbs */}
-            <motion.div style={{ y: y1 }} className="absolute top-[10%] left-[5%] w-[40rem] h-[40rem] bg-emerald-500/10 rounded-full blur-[100px] animate-pulse" />
-            <motion.div style={{ y: y2 }} className="absolute bottom-[10%] right-[5%] w-[30rem] h-[30rem] bg-blue-500/10 rounded-full blur-[100px] animate-pulse delay-700" />
-
-            <div className="container max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <div className="container max-w-7xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
                 {/* Badge */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border-white/10 text-emerald-400 text-[11px] font-black tracking-[0.2em] uppercase mb-12 shadow-2xl"
+                    className="mb-12"
                 >
-                    <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                    </span>
-                    Next-Gen Agentic Content Engine
+                    <div className="relative group p-[1px] rounded-full bg-gradient-to-r from-blue-500/50 via-cyan-500/50 to-purple-500/50">
+                        <div className="bg-black/80 backdrop-blur-xl px-6 py-2 rounded-full border border-white/5 flex items-center gap-3">
+                            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse shadow-[0_0_8px_#3b82f6]" />
+                            <span className="text-[11px] font-black uppercase tracking-widest text-slate-400">
+                                Now supercharged with agent mode
+                            </span>
+                        </div>
+                    </div>
                 </motion.div>
 
-                {/* Title */}
                 <motion.h1
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="text-6xl md:text-8xl lg:text-[10rem] font-black text-white leading-[0.85] tracking-tighter mb-10 selection:bg-emerald-500"
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                    className="text-5xl md:text-8xl font-black text-white leading-[1.1] tracking-tighter mb-8 max-w-4xl"
                 >
-                    DESIGN <br />
-                    <span className="text-gradient">FASTER.</span>
+                    AI that builds with you
                 </motion.h1>
 
-                {/* Subtitle */}
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-14 leading-relaxed font-medium"
+                    transition={{ duration: 0.6, delay: 0.15 }}
+                    className="text-xl md:text-2xl text-slate-400 font-normal mb-12 max-w-2xl mx-auto leading-relaxed px-4"
                 >
-                    Transform raw ideas into high-ranking search authority. AgentX combines real-time deep research with industry-leading Gemini 2.0 intelligence.
+                    An Agentic AI blogging system that researches, writes, edits, and optimizes content automatically.
                 </motion.p>
 
-                {/* Buttons */}
+                {/* CTA Buttons */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.6 }}
-                    className="flex flex-col sm:flex-row items-center justify-center gap-6"
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="flex flex-col sm:flex-row items-center gap-6 mb-10"
                 >
-                    <Link
-                        href="/workspace"
-                        className="group relative px-10 py-5 bg-white text-black rounded-2xl font-black flex items-center gap-3 transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(16,185,129,0.3)] overflow-hidden"
-                    >
-                        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-                        <span className="relative z-10">START GENERATING</span>
-                        <ArrowDownRight className="w-5 h-5 relative z-10 transition-transform group-hover:rotate-45" />
-                    </Link>
-
-                    <Link
-                        href="#how-it-works"
-                        className="px-10 py-5 glass hover:bg-white/10 text-white border border-white/10 rounded-2xl font-black flex items-center gap-3 transition-all hover:border-emerald-500/50"
-                    >
-                        <Play className="w-4 h-4 fill-white" />
-                        VIEW DEMO
+                    <Link href="/old-workspace.html" className="px-10 py-5 rounded-full font-black uppercase tracking-widest text-[12px] bg-white text-black transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_15px_30px_rgba(255,255,255,0.1)]">
+                        WORKSPACE PAGE
                     </Link>
                 </motion.div>
 
-                {/* Tech Stack Floaties */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-24 max-w-4xl mx-auto opacity-40">
-                    <div className="flex items-center gap-3 justify-center text-white font-bold tracking-widest text-[10px] uppercase border font-mono border-white/5 p-4 rounded-xl">
-                        <Cpu size={14} className="text-emerald-500" /> GEMINI 2.0
-                    </div>
-                    <div className="flex items-center gap-3 justify-center text-white font-bold tracking-widest text-[10px] uppercase border font-mono border-white/5 p-4 rounded-xl">
-                        <Zap size={14} className="text-blue-500" /> FAST API
-                    </div>
-                    <div className="flex items-center gap-3 justify-center text-white font-bold tracking-widest text-[10px] uppercase border font-mono border-white/5 p-4 rounded-xl">
-                        <Shield size={14} className="text-purple-500" /> SECURE AI
-                    </div>
-                    <div className="flex items-center gap-3 justify-center text-white font-bold tracking-widest text-[10px] uppercase border font-mono border-white/5 p-4 rounded-xl">
-                        <Zap size={14} className="text-yellow-500" /> SEO READY
-                    </div>
-                </div>
-            </div>
 
-            {/* Decorative Scan Line */}
-            <div className="absolute bottom-0 left-0 right-0 h-[30vh] bg-gradient-to-t from-emerald-500/5 to-transparent border-b border-emerald-500/10" />
-        </div>
+                {/* Sub-link */}
+                <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                    className="text-slate-500 text-sm font-medium mb-24"
+                >
+                </motion.p>
+
+                {/* Mockup Container */}
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                    className="relative w-full group"
+                >
+                    {/* Intense Colorful Aura Background */}
+                    <div className="absolute -inset-10 bg-gradient-to-r from-blue-500/20 via-cyan-500/20 to-purple-500/20 opacity-50 blur-[100px] group-hover:opacity-70 transition-opacity duration-1000" />
+
+                    {/* The Mockup Wrapper */}
+                    <div className="relative rounded-2xl border border-white/10 bg-[#0d1117]/90 shadow-2xl overflow-hidden backdrop-blur-xl">
+                        {/* Tab-bar like VS Code */}
+                        <div className="h-12 border-b border-white/5 flex items-center px-4 bg-black/40 gap-4">
+                            <div className="flex gap-2">
+                                <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/40" />
+                                <div className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/40" />
+                                <div className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/40" />
+                            </div>
+                            <div className="h-4 w-1px bg-white/5" />
+                            <div className="flex items-center gap-2 bg-white/10 px-3 py-1 rounded-md border border-white/5">
+                                <Code2 size={12} className="text-blue-400" />
+                                <span className="text-[10px] font-mono text-slate-400">runner-service.ts</span>
+                            </div>
+                        </div>
+
+                        {/* Editor Body */}
+                        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] h-[550px]">
+                            {/* Left: Code Editor Area */}
+                            <div className="p-8 font-mono text-sm leading-relaxed overflow-hidden border-r border-white/5 bg-[#0d1117]">
+                                <div className="flex gap-6">
+                                    <div className="text-slate-700 text-right space-y-1 select-none">
+                                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(n => <div key={n}>{n}</div>)}
+                                    </div>
+                                    <div className="space-y-1 text-slate-400">
+                                        <div><span className="text-purple-400">import</span> {'{'} <span className="text-blue-400">type</span> <span className="text-yellow-400">Runner</span> {'}'} <span className="text-purple-400">from</span> <span className="text-emerald-400">'@prisma/client'</span>;</div>
+                                        <div><span className="text-purple-400">import</span> <span className="text-blue-400">prisma</span> <span className="text-purple-400">from</span> <span className="text-emerald-400">'@/lib/data/prisma'</span>;</div>
+                                        <div className="h-4" />
+                                        <div><span className="text-purple-400">export interface</span> <span className="text-yellow-400">RunnerService</span> {'{'}</div>
+                                        <div>  <span className="text-blue-400">getById</span>(id: <span className="text-blue-400">number</span>): <span className="text-yellow-400">Promise</span>{'<'}<span className="text-yellow-400">Runner</span> | <span className="text-blue-400">null</span>{'>'};</div>
+                                        <div>{'}'}</div>
+                                        <div className="h-4" />
+                                        <div><span className="text-purple-400">const</span> <span className="text-blue-400">runnerService</span>: <span className="text-yellow-400">RunnerService</span> = {'{'}</div>
+                                        <div className="bg-white/5 -mx-4 px-4 py-1 border-y border-white/5">
+                                            <span className="text-blue-400 ml-4">getById</span>: <span className="text-purple-400">async</span> (id: <span className="text-blue-400">number</span>) ={'>'} {'{'}
+                                        </div>
+                                        <div className="relative">
+                                            <span className="text-purple-400 ml-8">return await</span><span className="text-slate-200"> prisma.runner.</span><span className="text-blue-400">findUnique</span>({'...'});
+                                            {/* Cursor Animation */}
+                                            <motion.div
+                                                animate={{ opacity: [0, 1, 0] }}
+                                                transition={{ duration: 0.8, repeat: Infinity }}
+                                                className="absolute top-0 right-0 w-[2px] bg-blue-400 h-full"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Right: AI Chat Interface */}
+                            <div className="bg-black/40 p-10 flex flex-col h-full relative backdrop-blur-xl">
+                                <div className="flex items-center gap-3 mb-10 pb-4 border-b border-white/5">
+                                    <Bot size={18} className="text-blue-400" />
+                                    <span className="font-black text-[9px] uppercase tracking-[0.3em] text-slate-500">CO_PILOT_CORE</span>
+                                </div>
+
+                                <div className="flex-1 flex flex-col items-center justify-center text-center space-y-8">
+                                    <div className="relative">
+                                        <div className="absolute inset-0 bg-blue-500/20 blur-2xl rounded-full" />
+                                        <div className="relative w-24 h-24 rounded-3xl bg-black border border-white/5 flex items-center justify-center text-blue-400 shadow-2xl">
+                                            <Bot size={48} className="drop-shadow-[0_0_15px_#3b82f6]" />
+                                        </div>
+                                    </div>
+                                    <div className="space-y-3">
+                                        <h4 className="font-black text-white uppercase text-[12px] tracking-widest">Edit with Copilot</h4>
+                                        <p className="text-slate-500 text-[11px] leading-relaxed max-w-[200px]">Generating enterprise-grade AI intelligence from the command center.</p>
+                                    </div>
+                                </div>
+
+                                <div className="mt-auto px-5 py-4 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-between group-hover:border-blue-500/30 transition-colors">
+                                    <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Ask a question...</span>
+                                    <div className="flex items-center gap-2">
+                                        <div className="px-1.5 py-0.5 rounded border border-white/10 text-[9px] font-mono text-slate-600">Cmd</div>
+                                        <div className="px-1.5 py-0.5 rounded border border-white/10 text-[9px] font-mono text-slate-600">I</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Floating Bot Icon - Absolute Ref to Image */}
+                    <motion.div
+                        animate={{ y: [0, -20, 0] }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute right-[-2%] bottom-[15%] z-[60] pointer-events-none hidden xl:block"
+                    >
+                        <div className="relative">
+                            <div className="absolute inset-0 bg-blue-500/40 blur-3xl rounded-full scale-150 animate-pulse" />
+                            <div className="relative w-40 h-40 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full p-[2px] shadow-2xl">
+                                <div className="bg-black w-full h-full rounded-full flex items-center justify-center overflow-hidden">
+                                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.3),transparent_70%)]" />
+                                    <Bot size={70} className="text-blue-400 relative z-10 drop-shadow-[0_0_20px_#3b82f6]" />
+
+                                    {/* AI Scan Pulse */}
+                                    <motion.div
+                                        animate={{ top: ['100%', '-100%'] }}
+                                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                                        className="absolute inset-x-0 h-1 bg-blue-400/50 blur-sm"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+                </motion.div>
+            </div>
+        </section>
     );
 }
