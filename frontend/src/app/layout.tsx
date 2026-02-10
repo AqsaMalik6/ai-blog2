@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import StructuredData from "@/components/StructuredData";
 
-const outfit = Outfit({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-outfit",
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <body
-        className={`${outfit.variable} antialiased selection:bg-accent-blue/30`}
+        className={`${inter.variable} antialiased selection:bg-accent-blue/30`}
       >
         <StructuredData />
         {children}

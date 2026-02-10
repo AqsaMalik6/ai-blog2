@@ -5,35 +5,35 @@ import { Github, Twitter, Linkedin, MessageCircle, ShieldCheck, Zap, Bot, ArrowR
 
 export default function Footer() {
     return (
-        <footer className="bg-black pt-40 pb-20 border-t border-white/5 relative overflow-hidden">
+        <footer className="bg-black pt-24 pb-16 border-t border-white/5 relative overflow-hidden">
             {/* Background Atmosphere */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.05)_0%,transparent_50%)]" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[150px] -ml-40 -mb-40" />
 
             <div className="container max-w-7xl mx-auto px-6 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 mb-32">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24">
                     {/* Brand Column */}
-                    <div className="lg:col-span-5 space-y-12">
+                    <div className="lg:col-span-5 space-y-10">
                         <Link href="/" className="flex items-center gap-4 group">
-                            <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 group-hover:border-blue-500/50 transition-all duration-500">
-                                <Bot className="w-6 h-6 text-blue-400" />
+                            <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center border border-white/10 group-hover:border-blue-500/50 transition-all duration-500">
+                                <Bot className="w-5 h-5 text-blue-400" />
                             </div>
-                            <span className="text-3xl font-black tracking-tighter text-white uppercase">
+                            <span className="text-2xl font-black tracking-tighter text-white uppercase">
                                 AURE<span className="text-blue-500">GON</span>
                             </span>
                         </Link>
-                        <p className="text-slate-500 text-xl font-medium max-w-md leading-relaxed">
+                        <p className="text-base text-gray-300 max-w-md leading-relaxed">
                             Building the future of autonomous content intelligence. Empowering agencies with neural-driven growth.
                         </p>
 
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-3">
                             {[Github, Twitter, Linkedin, MessageCircle].map((Icon, idx) => (
                                 <Link
                                     key={idx}
                                     href="#"
-                                    className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-slate-500 hover:text-white hover:bg-blue-600 transition-all border border-white/5"
+                                    className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-slate-500 hover:text-white hover:bg-blue-600 transition-all border border-white/5"
                                 >
-                                    <Icon size={20} />
+                                    <Icon size={16} />
                                 </Link>
                             ))}
                         </div>

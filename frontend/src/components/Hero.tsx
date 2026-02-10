@@ -6,37 +6,20 @@ import Link from 'next/link';
 
 export default function Hero() {
     return (
-        <section className="relative pt-32 pb-40 overflow-hidden bg-black min-h-[90vh] flex flex-col items-center">
+        <section className="relative pt-20 pb-24 overflow-hidden bg-black min-h-[75vh] flex flex-col items-center">
             {/* Background Atmosphere */}
             <div className="absolute inset-0 z-0">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[#3b82f6]/10 rounded-full blur-[160px] animate-pulse" />
-                <div className="absolute top-[60%] left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-[#8b5cf6]/5 rounded-full blur-[140px]" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-[#3b82f6]/10 rounded-full blur-[120px] animate-pulse" />
+                <div className="absolute top-[60%] left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-[#8b5cf6]/5 rounded-full blur-[100px]" />
                 <div className="absolute inset-0 grid-background opacity-20" />
             </div>
 
-            <div className="container max-w-7xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
-                {/* Badge */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="mb-12"
-                >
-                    <div className="relative group p-[1px] rounded-full bg-gradient-to-r from-blue-500/50 via-cyan-500/50 to-purple-500/50">
-                        <div className="bg-black/80 backdrop-blur-xl px-6 py-2 rounded-full border border-white/5 flex items-center gap-3">
-                            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse shadow-[0_0_8px_#3b82f6]" />
-                            <span className="text-[11px] font-black uppercase tracking-widest text-slate-400">
-                                Now supercharged with agent mode
-                            </span>
-                        </div>
-                    </div>
-                </motion.div>
-
+            <div className="container max-w-5xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
                 <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.1 }}
-                    className="text-5xl md:text-8xl font-black text-white leading-[1.1] tracking-tighter mb-8 max-w-4xl"
+                    className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-[1.1] tracking-tighter mb-5 max-w-2xl"
                 >
                     AI that builds with you
                 </motion.h1>
@@ -45,7 +28,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.15 }}
-                    className="text-xl md:text-2xl text-slate-400 font-normal mb-12 max-w-2xl mx-auto leading-relaxed px-4"
+                    className="text-base text-gray-300 max-w-lg mx-auto leading-relaxed"
                 >
                     An Agentic AI blogging system that researches, writes, edits, and optimizes content automatically.
                 </motion.p>
@@ -55,9 +38,9 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="flex flex-col sm:flex-row items-center gap-6 mb-10"
+                    className="flex justify-center mt-12"
                 >
-                    <Link href="/old-workspace.html" className="px-10 py-5 rounded-full font-black uppercase tracking-widest text-[12px] bg-white text-black transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_15px_30px_rgba(255,255,255,0.1)]">
+                    <Link href="/old-workspace.html" className="px-8 py-3 rounded-full font-black uppercase tracking-widest text-[10px] bg-white text-black transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_15px_30px_rgba(255,255,255,0.1)]">
                         WORKSPACE PAGE
                     </Link>
                 </motion.div>
@@ -99,7 +82,7 @@ export default function Hero() {
                         </div>
 
                         {/* Editor Body */}
-                        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] h-[550px]">
+                        <div className="grid grid-cols-1 lg:grid-cols-[1fr_260px] h-[380px]">
                             {/* Left: Code Editor Area */}
                             <div className="p-8 font-mono text-sm leading-relaxed overflow-hidden border-r border-white/5 bg-[#0d1117]">
                                 <div className="flex gap-6">
@@ -170,10 +153,10 @@ export default function Hero() {
                     >
                         <div className="relative">
                             <div className="absolute inset-0 bg-blue-500/40 blur-3xl rounded-full scale-150 animate-pulse" />
-                            <div className="relative w-40 h-40 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full p-[2px] shadow-2xl">
+                            <div className="relative w-32 h-32 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full p-[2px] shadow-2xl">
                                 <div className="bg-black w-full h-full rounded-full flex items-center justify-center overflow-hidden">
                                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.3),transparent_70%)]" />
-                                    <Bot size={70} className="text-blue-400 relative z-10 drop-shadow-[0_0_20px_#3b82f6]" />
+                                    <Bot size={60} className="text-blue-400 relative z-10 drop-shadow-[0_0_20px_#3b82f6]" />
 
                                     {/* AI Scan Pulse */}
                                     <motion.div

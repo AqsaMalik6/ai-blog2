@@ -33,7 +33,7 @@ export default function Navbar() {
         >
             <motion.div
                 className={cn(
-                    "max-w-7xl mx-auto flex items-center justify-between px-8 py-4 rounded-3xl transition-all duration-500 relative",
+                    "max-w-6xl mx-auto flex items-center justify-between px-6 py-3 rounded-2xl transition-all duration-500 relative",
                     isScrolled ? "glass shadow-2xl border-white/10" : "bg-transparent border-transparent"
                 )}
             >
@@ -47,7 +47,7 @@ export default function Navbar() {
                         </div>
                     </div>
                     <div className="flex flex-col">
-                        <span className="text-2xl font-black tracking-tighter text-white leading-none">
+                        <span className="text-xl font-black tracking-tighter text-white leading-none">
                             AURE<span className="text-accent-blue">GON</span>
                         </span>
                     </div>
@@ -59,7 +59,7 @@ export default function Navbar() {
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-[13px] font-bold uppercase tracking-[0.1em] text-white/70 hover:text-accent-blue transition-all"
+                            className="text-[12px] font-bold uppercase tracking-[0.1em] text-white/70 hover:text-accent-blue transition-all"
                         >
                             {link.name}
                         </Link>
@@ -70,7 +70,7 @@ export default function Navbar() {
                 <div className="hidden md:flex items-center gap-6">
                     <Link
                         href="/old-workspace.html"
-                        className="btn-primary flex items-center gap-3 px-8 py-4 text-[12px] group"
+                        className="btn-primary flex items-center gap-3 px-6 py-3 text-[10px] group"
                     >
                         <span>WORKSPACE PAGE</span>
                         <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/40 transition-colors">

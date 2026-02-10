@@ -11,11 +11,11 @@ import {
 
 export default function TechStack() {
     return (
-        <section id="features" className="py-24 bg-[#0a0a0a] text-white overflow-hidden relative">
+        <section id="features" className="py-16 bg-[#0a0a0a] text-white overflow-hidden relative">
             {/* Ambient Background */}
             <div className="absolute top-1/2 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_50%,rgba(59,130,246,0.05)_0%,transparent_50%)] pointer-events-none" />
 
-            <div className="container max-w-7xl mx-auto px-6 relative z-10">
+            <div className="container max-w-5xl mx-auto px-6 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
                     {/* Left Side: Professional AI Representation Image */}
@@ -23,7 +23,7 @@ export default function TechStack() {
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="relative rounded-[48px] overflow-hidden border border-white/10 shadow-3xl aspect-square lg:aspect-auto lg:h-[700px]"
+                        className="relative rounded-[32px] overflow-hidden border border-white/10 shadow-3xl aspect-square lg:aspect-auto lg:h-[450px]"
                     >
                         <img
                             src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop"
@@ -39,7 +39,7 @@ export default function TechStack() {
                                 </div>
                                 <span className="text-[11px] font-black uppercase tracking-[0.4em] text-white">Active Core Processing</span>
                             </div>
-                            <p className="text-white text-lg font-normal leading-tight uppercase">Every node is verified across 100+ global data points for maximum authority.</p>
+                            <p className="text-white text-sm font-normal leading-tight uppercase opacity-80">Every node is verified across 100+ global data points for maximum authority.</p>
                         </div>
                     </motion.div>
 
@@ -50,12 +50,12 @@ export default function TechStack() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                         >
-                            <span className="text-blue-500 font-black uppercase tracking-[0.6em] text-[12px] mb-8 block">[Built with Innovation]</span>
-                            <h3 className="text-5xl md:text-8xl font-black text-white leading-[0.95] mb-12 tracking-tighter uppercase">
+                            <span className="text-blue-500 font-black uppercase tracking-[0.6em] text-[12px] mb-8 block"></span>
+                            <h3 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-[1.1] tracking-tighter mb-8 max-w-4xl uppercase">
                                 Advanced AI <br />
                                 <span className="text-blue-500">Orchestration.</span>
                             </h3>
-                            <p className="text-white text-2xl font-normal leading-relaxed max-w-xl uppercase tracking-tight">
+                            <p className="text-base text-gray-300 max-w-lg leading-relaxed">
                                 We&apos;ve engineered our AI Blog Agent using the world&apos;s most powerful APIs and SDKs to ensure enterprise-grade reliability and infinite scalability.
                             </p>
                         </motion.div>
@@ -79,26 +79,16 @@ export default function TechStack() {
                                         <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-500/20">
                                             <CheckCircle2 size={24} />
                                         </div>
-                                        <h4 className="text-xl font-black text-white tracking-tight uppercase leading-none">{item.title}</h4>
+                                        <h4 className="text-base font-black text-white tracking-tight uppercase leading-none">{item.title}</h4>
                                     </div>
-                                    <p className="text-slate-400 text-[15px] font-normal leading-relaxed pl-16 uppercase opacity-70">
+                                    <p className="text-slate-500 text-[11px] font-normal leading-relaxed pl-14 uppercase">
                                         {item.text}
                                     </p>
                                 </motion.div>
                             ))}
                         </div>
 
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="pt-6 flex items-center gap-10"
-                        >
-                            <div className="flex items-center gap-5 bg-white/5 border border-white/10 px-10 py-5 rounded-3xl">
-                                <History size={24} className="text-blue-500" />
-                                <span className="text-[12px] font-normal uppercase tracking-[0.3em] text-white">Chat History Persistence Active</span>
-                            </div>
-                        </motion.div>
+
                     </div>
                 </div>
             </div>

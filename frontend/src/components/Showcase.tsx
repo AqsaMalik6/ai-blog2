@@ -55,14 +55,14 @@ export default function Showcase() {
 
     return (
         <section className="py-24 bg-[#0a192f] overflow-hidden text-white">
-            <div className="container max-w-7xl mx-auto px-6 mb-20">
+            <div className="container max-w-5xl mx-auto px-6 mb-10">
                 <div className="flex flex-col md:flex-row justify-between items-end gap-10">
-                    <div className="max-w-2xl">
+                    <div className="max-w-sm">
                         <motion.h2
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="text-4xl md:text-7xl font-black tracking-tighter leading-tight mb-8"
+                            className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter leading-tight mb-8 max-w-4xl"
                         >
                             Powerful Nodes <br />
                             <span className="text-blue-400">Built To Convert.</span>
@@ -72,7 +72,7 @@ export default function Showcase() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="text-lg text-slate-400 font-normal max-w-lg"
+                            className="text-base text-gray-300 max-w-lg leading-relaxed"
                         >
                             Our agent creates semantic clusters and high-converting layouts
                             designed to capture attention and build authority in any niche.
@@ -86,9 +86,9 @@ export default function Showcase() {
                             viewport={{ once: true }}
                             className="relative"
                         >
-                            <span className="text-[120px] font-black text-blue-400/10 leading-none">50+</span>
+                            <span className="text-[100px] font-black text-blue-400/10 leading-none">50+</span>
                             <div className="absolute top-1/2 left-0 -translate-y-1/2">
-                                <p className="text-xl font-black uppercase tracking-widest text-white/80">
+                                <p className="text-lg font-black uppercase tracking-widest text-white/80">
                                     Templates & <br /> Designs
                                 </p>
                             </div>
@@ -100,18 +100,18 @@ export default function Showcase() {
             {/* Marquee Section */}
             <div className="relative flex overflow-x-hidden py-10">
                 <motion.div
-                    animate={{ x: [0, -130 * showcases.length * 4] }}
+                    animate={{ x: [0, -110 * showcases.length * 4] }}
                     transition={{
                         duration: 35,
                         repeat: Infinity,
                         ease: "linear"
                     }}
-                    className="flex gap-10 whitespace-nowrap"
+                    className="flex gap-8 whitespace-nowrap"
                 >
                     {marqueeItems.map((item, idx) => (
                         <div
                             key={idx}
-                            className="w-[420px] h-[580px] bg-white/5 rounded-[48px] border border-white/10 p-3 group hover:border-blue-400/50 transition-all duration-500"
+                            className="w-[260px] h-[360px] bg-white/5 rounded-[24px] border border-white/10 p-2 group hover:border-blue-400/50 transition-all duration-500"
                         >
                             <div className="w-full h-full bg-[#0d1624] rounded-[38px] overflow-hidden relative border border-white/5 flex flex-col shadow-2xl">
                                 {/* Visual Image Area */}
@@ -133,10 +133,10 @@ export default function Showcase() {
                                 </div>
 
                                 {/* Content Area */}
-                                <div className="p-10 flex-1 flex flex-col">
-                                    <div className="mb-6">
-                                        <h3 className="text-3xl font-black text-white mb-3 tracking-tight group-hover:text-blue-400 transition-colors uppercase">{item.title}</h3>
-                                        <p className="text-slate-500 text-[10px] font-normal uppercase tracking-[0.4em]">Optimized Neural Node V.4.2</p>
+                                <div className="p-6 flex-1 flex flex-col">
+                                    <div className="mb-4">
+                                        <h3 className="text-lg font-black text-white mb-2 tracking-tight group-hover:text-blue-400 transition-colors uppercase">{item.title}</h3>
+                                        <p className="text-slate-500 text-[8px] font-normal uppercase tracking-[0.4em]">Optimized Neural Node V.4.2</p>
                                     </div>
 
                                     <div className="mt-auto flex items-center justify-between">

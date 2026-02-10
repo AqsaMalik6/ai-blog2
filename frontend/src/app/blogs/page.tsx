@@ -76,31 +76,31 @@ export default function BlogsPage() {
                 <div className="absolute bottom-0 left-[-10%] w-[50%] h-[50%] bg-purple-600/5 rounded-full blur-[150px]" />
             </div>
 
-            <div className="relative z-10 pt-48 pb-40">
-                <div className="container max-w-7xl mx-auto px-6">
+            <div className="relative z-10 pt-32 pb-24">
+                <div className="container max-w-5xl mx-auto px-6">
                     {/* Header */}
-                    <div className="text-center mb-24">
+                    <div className="text-center mb-14">
                         <motion.span
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="text-blue-500 font-normal uppercase tracking-[0.6em] text-[12px] mb-8 block"
+                            className="text-blue-500 font-normal uppercase tracking-[0.6em] text-[9px] mb-6 block"
                         >
                             The Intelligence Archive
                         </motion.span>
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="text-6xl md:text-9xl font-black tracking-tighter uppercase mb-12"
+                            className="text-3xl md:text-5xl font-black tracking-tighter uppercase mb-10"
                         >
                             Explore <br /> <span className="text-blue-500">Every Node.</span>
                         </motion.h1>
                     </div>
 
                     {/* Chat History Section - NEW */}
-                    <div className="mb-32">
-                        <div className="flex items-center gap-4 mb-12">
-                            <History className="text-blue-500" size={24} />
-                            <h2 className="text-3xl font-black uppercase tracking-tighter">Active Sessions</h2>
+                    <div className="mb-24">
+                        <div className="flex items-center gap-4 mb-10">
+                            <History className="text-blue-500" size={20} />
+                            <h2 className="text-2xl font-black uppercase tracking-tighter">Active Sessions</h2>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                             {chats.slice(0, 4).map((chat, idx) => (
@@ -111,13 +111,13 @@ export default function BlogsPage() {
                                     transition={{ delay: idx * 0.1 }}
                                 >
                                     <Link href={`/old-workspace.html?chat_id=${chat.id}`} className="group block h-full">
-                                        <div className="bg-white/5 border border-white/10 rounded-[32px] p-8 h-full flex flex-col hover:bg-white/[0.08] hover:border-blue-500/30 transition-all duration-500 relative overflow-hidden">
+                                        <div className="bg-white/5 border border-white/10 rounded-[20px] p-4 h-full flex flex-col hover:bg-white/[0.08] hover:border-blue-500/30 transition-all duration-500 relative overflow-hidden">
 
                                             <div className="absolute top-0 right-0 p-4 opacity-[0.05] group-hover:scale-150 transition-transform">
                                                 <MessageSquare size={80} />
                                             </div>
                                             <span className="text-[10px] font-normal text-blue-500 uppercase tracking-widest mb-4">Chat ID #{chat.id}</span>
-                                            <h3 className="text-xl font-black text-white mb-6 uppercase tracking-tight line-clamp-2 leading-tight group-hover:text-blue-400">
+                                            <h3 className="text-sm font-black text-white mb-4 uppercase tracking-tight line-clamp-2 leading-tight group-hover:text-blue-400">
                                                 {chat.title}
                                             </h3>
                                             <div className="mt-auto flex items-center justify-between pt-6 border-t border-white/5">
@@ -174,7 +174,7 @@ export default function BlogsPage() {
                         </div>
                     ) : currentBlogs.length > 0 ? (
                         <>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                                 {currentBlogs.map((blog, idx) => {
                                     const category = getBlogCategory(blog.topic);
                                     return (
@@ -187,9 +187,9 @@ export default function BlogsPage() {
                                             className="group"
                                         >
                                             <Link href={`/blogs/${blog.id}`} className="block h-full">
-                                                <div className="bg-white/5 border border-white/10 rounded-[48px] p-8 h-full flex flex-col hover:bg-white/[0.08] hover:border-blue-500/30 transition-all duration-500">
+                                                <div className="bg-white/5 border border-white/10 rounded-[20px] p-4 h-full flex flex-col hover:bg-white/[0.08] hover:border-blue-500/30 transition-all duration-500">
                                                     {/* Featured Image Replacement */}
-                                                    <div className="relative h-64 rounded-[32px] overflow-hidden mb-8 border border-white/5">
+                                                    <div className="relative h-40 rounded-[16px] overflow-hidden mb-6 border border-white/5">
                                                         <img
                                                             src={`https://images.unsplash.com/photo-${1600000000000 + blog.id % 1000}?auto=format&fit=crop&q=80&w=800`}
                                                             alt={blog.topic}
@@ -209,11 +209,11 @@ export default function BlogsPage() {
                                                         </div>
                                                     </div>
 
-                                                    <h3 className="text-3xl font-black text-white mb-6 leading-tight uppercase tracking-tight line-clamp-2 group-hover:text-blue-400 transition-colors">
+                                                    <h3 className="text-lg font-black text-white mb-3 leading-tight uppercase tracking-tight line-clamp-2 group-hover:text-blue-400 transition-colors">
                                                         {blog.topic}
                                                     </h3>
 
-                                                    <p className="text-slate-400 font-normal text-sm leading-relaxed line-clamp-3 mb-10 uppercase tracking-tight">
+                                                    <p className="text-slate-400 font-normal text-[11px] leading-relaxed line-clamp-3 mb-6 uppercase tracking-tight">
                                                         {blog.content.substring(0, 150).replace(/[#*]/g, '')}...
                                                     </p>
 
